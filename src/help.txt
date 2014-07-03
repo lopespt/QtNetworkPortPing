@@ -1,0 +1,6 @@
+usage:  QtNetworkPortPing -s port
+        QtNetworkPortPing -c host:port
+		
+This is a TCP port ping teste. Open a server with -s command and ping the server with -c command.
+
+	
