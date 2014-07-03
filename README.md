@@ -7,11 +7,13 @@ This program is usefull where you need to check if a firewall is blocking some p
 
 
 Just run:
+
 	./QtNetworkPortPing -s {port number}
 
 in order to start listening on port {port number}
 
 On the other endpoint:
+
 	./QtNetworkPortPing -c {host}:{port number}
 
 
