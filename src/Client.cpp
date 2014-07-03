@@ -22,7 +22,7 @@ Client::Client(QHostAddress& address, quint16 port, unsigned int packetsSize) :
 }
 
 Client::~Client() {
-
+	//Test
 }
 
 void Client::sendPacket() {
