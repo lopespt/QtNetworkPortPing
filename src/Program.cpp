@@ -28,7 +28,7 @@ Program::Program() :
 
 	} else if (arguments.contains("-c", Qt::CaseSensitive)) {
 
-		if (arguments.size() != 3) {
+		if (arguments.size() < 3) {
 			showHelp();
 			return;
 		}
@@ -52,11 +52,26 @@ Program::Program() :
 		}
 
 		//ok = ok & host.setAddress(hostStr.at(0));
-		if (!ok)
+		if (!ok) {
 			showHelp();
+			return;
+		}
+
+		int packetSize = 2000;
+		if (arguments.count() == 4) {
+			packetSize = arguments.at(3).toInt(&ok);
+			assert(packetSize > 17);
+		}
+		packetSize -= 17;
+
+		if (!ok) {
+			showHelp();
+			return;
+		}
+
 		printf("server: %s port: %hu\n",
 				ipList.first().toString().toStdString().c_str(), port);
-		new Client(ipList.first(), port, 2000);
+		new Client(ipList.first(), port, packetSize);
 	} else {
 		showHelp();
 	}

@@ -15,7 +15,7 @@
 
 int main(int argc, char * argv[]) {
 	QCoreApplication app(argc, argv);
-//..
+
 	new Program();
 
 	return app.exec();
