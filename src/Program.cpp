@@ -60,7 +60,12 @@ Program::Program() :
 		int packetSize = 2000;
 		if (arguments.count() == 4) {
 			packetSize = arguments.at(3).toInt(&ok);
-			assert(packetSize > 17);
+			//assert(packetSize > 17);
+			if (packetSize <= 17) {
+				printf("Error: packet size must be greater than 17");
+				fflush(stdout);
+				return;
+			}
 		}
 		packetSize -= 17;
 
@@ -78,7 +83,7 @@ Program::Program() :
 }
 
 Program::~Program() {
-	// TODO Auto-generated destructor stub
+
 }
 
 void Program::showHelp() {
@@ -86,4 +91,5 @@ void Program::showHelp() {
 	f.open(QIODevice::ReadOnly);
 	printf("%s\n", f.readAll().data());
 	f.close();
+	QCoreApplication::exit(0);
 }
